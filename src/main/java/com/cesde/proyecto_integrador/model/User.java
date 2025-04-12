@@ -44,15 +44,23 @@ public class User {
     private Profile profile;
 
     @ManyToOne
-    @JoinColumn(name = "id") 
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Team team;
+    
 
     public enum Role {
         ADMIN,
         STUDENT,
         TEACHER
     }
-    
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     @PrePersist
     public void prePersist() {
         Profile newProfile = new Profile();

@@ -1,27 +1,24 @@
 package com.cesde.proyecto_integrador.model;
 
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
-@Table(name = "groups")
-public class Group {
+@Data
+@Table(name = "teams")
+public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @JoinColumn(name = "id_materia", nullable = false)
-    private Long idMateria;
-
-    @JoinColumn(name = "id_profesor", nullable = false)
-    private Long idProfesor;
-
     @Column(name = "grupo", nullable = false, length = 20)
     private String grupo;
 
@@ -34,11 +31,8 @@ public class Group {
     @Column(name = "año", nullable = false)
     private int año;
 
-    public Group(Long id, Long idMateria, Long idProfesor, String grupo, String semestre, String jornada, int año) {
+    public Team(Long id, String semestre, String jornada, int año) {
         this.id = id;
-        this.idMateria = idMateria;
-        this.idProfesor = idProfesor;
-        this.grupo = grupo;
         this.semestre = semestre;
         this.jornada = jornada;
         this.año = año;
@@ -50,22 +44,6 @@ public class Group {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdMateria() {
-        return idMateria;
-    }
-
-    public void setIdMateria(Long idMateria) {
-        this.idMateria = idMateria;
-    }
-
-    public Long getIdProfesor() {
-        return idProfesor;
-    }
-
-    public void setIdProfesor(Long idProfesor) {
-        this.idProfesor = idProfesor;
     }
 
     public String getGrupo() {
@@ -100,11 +78,11 @@ public class Group {
         this.año = año;
     }
     
-
+    @OneToMany(mappedBy = "team")
+    private List<User> users;
+    
     
 
-
-
-
-    
 }
+    
+

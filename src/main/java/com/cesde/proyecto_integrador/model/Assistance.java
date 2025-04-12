@@ -1,6 +1,4 @@
 package com.cesde.proyecto_integrador.model;
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,12 +13,6 @@ public class Assistance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @JoinColumn(name = "id_estudiante", nullable = false)
-    private Long idEstudiante;
-
-    @JoinColumn(name = "id_grupo", nullable = false)
-    private Long idGrupo;
 
     @JoinColumn(name = "id_clase", nullable = false)
     private Long idClase;
@@ -37,8 +29,6 @@ public class Assistance {
     public Assistance(Long id, Long idEstudiante, Long idGrupo, Long idClase, String fecha, String hora,
             String estado) {
         this.id = id;
-        this.idEstudiante = idEstudiante;
-        this.idGrupo = idGrupo;
         this.idClase = idClase;
         this.fecha = fecha;
         this.hora = hora;
@@ -51,22 +41,6 @@ public class Assistance {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdEstudiante() {
-        return idEstudiante;
-    }
-
-    public void setIdEstudiante(Long idEstudiante) {
-        this.idEstudiante = idEstudiante;
-    }
-
-    public Long getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(Long idGrupo) {
-        this.idGrupo = idGrupo;
     }
 
     public Long getIdClase() {

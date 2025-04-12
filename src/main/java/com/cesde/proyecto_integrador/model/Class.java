@@ -14,12 +14,6 @@ public class Class {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @JoinColumn(name = "id_profesor", nullable = false)
-    private Long idProfesor;
-
-    @JoinColumn(name = "id_grupo", nullable = false)
-    private String idGrupo;
 
     @Column(name = "fecha", nullable = false, length = 20)
     private String fecha;
@@ -33,11 +27,9 @@ public class Class {
     @Column(name = "salon", nullable = false, length = 100)
     private String salon;
 
-    public Class(Long id, Long idProfesor, String idGrupo, String fecha, String horaInicio,
+    public Class(Long id, String fecha, String horaInicio,
             String horaFin, String salon) {
         this.id = id;
-        this.idProfesor = idProfesor;
-        this.idGrupo = idGrupo;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -50,22 +42,6 @@ public class Class {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdProfesor() {
-        return idProfesor;
-    }
-
-    public void setIdProfesor(Long idProfesor) {
-        this.idProfesor = idProfesor;
-    }
-
-    public String getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(String idGrupo) {
-        this.idGrupo = idGrupo;
     }
 
     public String getFecha() {

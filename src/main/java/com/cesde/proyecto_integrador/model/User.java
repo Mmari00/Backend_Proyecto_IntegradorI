@@ -43,6 +43,10 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Profile profile;
 
+    @ManyToOne
+    @JoinColumn(name = "id") 
+    private Team team;
+
     public enum Role {
         ADMIN,
         STUDENT,
